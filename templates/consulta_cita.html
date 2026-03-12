@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Consultar Citas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Consultar Citas Agendadas</h2>
+        
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul class="alert" style="background-color: #f8d7da; color: #721c24;">
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="/consulta_cita">
+            <label>Ingrese el Documento de Identidad:</label>
+            <input type="text" name="documento" required>
+            <button type="submit">Buscar Citas</button>
+        </form>
+        
+        <div class="menu-links"><a href="/">Volver al Menú Principal</a></div>
+    </div>
+</body>
+</html>

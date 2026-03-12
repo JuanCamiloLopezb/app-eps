@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Paciente</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Registro de Nuevo Paciente</h2>
+        
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul class="alert">
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="/registro_paciente">
+            <label>Documento de Identidad:</label>
+            <input type="text" name="documento" required>
+            
+            <label>Nombre:</label>
+            <input type="text" name="nombre" required>
+            
+            <label>Apellido:</label>
+            <input type="text" name="apellido" required>
+            
+            <label>Teléfono:</label>
+            <input type="text" name="telefono">
+            
+            <label>Correo Electrónico:</label>
+            <input type="email" name="correo">
+            
+            <label>EPS:</label>
+            <input type="text" name="eps">
+            
+            <button type="submit">Registrar Paciente</button>
+        </form>
+        
+        <div class="menu-links"><a href="/">Volver al Menú Principal</a></div>
+    </div>
+</body>
+</html>

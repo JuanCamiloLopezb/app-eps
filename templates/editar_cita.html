@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Cita Médica</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Reprogramar Cita</h2>
+        <p style="text-align: center; color: #555;">Actualice los datos y guarde los cambios.</p>
+        
+        <form method="POST" action="/editar_cita/{{ cita.id }}">
+            <label>Nombre del Médico:</label>
+            <input type="text" name="medico" value="{{ cita.medico }}" required>
+            
+            <label>Nueva Fecha:</label>
+            <input type="date" name="fecha" value="{{ cita.fecha }}" required>
+            
+            <label>Nueva Hora:</label>
+            <input type="time" name="hora" value="{{ cita.hora }}" required>
+            
+            <button type="submit" style="background-color: #28a745;">Guardar Cambios</button>
+        </form>
+        
+        <div class="menu-links"><a href="/consulta_cita">Cancelar y Volver</a></div>
+    </div>
+</body>
+</html>

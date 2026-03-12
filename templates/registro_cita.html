@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agendar Cita Médica</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Agendar Cita Médica</h2>
+        
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul class="alert">
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="/registro_cita">
+            <label>Documento del Paciente:</label>
+            <input type="text" name="documento" required>
+            
+            <label>Nombre del Médico:</label>
+            <input type="text" name="medico" required>
+            
+            <label>Tipo de Cita (General, Especialista, etc.):</label>
+            <input type="text" name="tipo_cita" required>
+            
+            <label>Fecha de la cita:</label>
+            <input type="date" name="fecha" required>
+            
+            <label>Hora de la cita:</label>
+            <input type="time" name="hora" required>
+            
+            <label>Dirección de la EPS:</label>
+            <input type="text" name="direccion_eps">
+            
+            <button type="submit">Agendar Cita</button>
+        </form>
+        
+        <div class="menu-links"><a href="/">Volver al Menú Principal</a></div>
+    </div>
+</body>
+</html>
