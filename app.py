@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 import mysql.connector
+import os 
 from config import Config
 
 app = Flask(__name__)
@@ -139,5 +140,8 @@ def editar_cita(id):
             cursor.close()
             conexion.close()
 
+# ... (todo el resto de tu código) ...
+
 if __name__ == '__main__':
-    app.run(debug=True, port=5001)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)
